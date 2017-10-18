@@ -1,0 +1,4 @@
+#Fri Oct 13 11:58:48 CEST 2017
+base.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9
+renamed.0=classes.dex
+file.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9\\classes.dex

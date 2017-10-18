@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Distractor Task</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_distractor_task">DistractorTask</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
