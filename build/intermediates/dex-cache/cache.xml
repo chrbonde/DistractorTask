@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="a5d35afb45b9cd70235b1279d28b479397a7b31f">
+        sha1="d512f96135c815799bce7dee206afbc280951095">
         <dex dex="C:\Users\Chr-b\AndroidStudioProjects\DistractorTask\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_fc515bba201fbd7728ac1c27cfa12268e43f966b\classes.dex" />
     </item>
     <item
@@ -138,21 +138,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Chr-b\.android\build-cache\3256922d39e6bbcaebdb0c5cf3114d1d15e8eb31\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="C:\Users\Chr-b\AndroidStudioProjects\DistractorTask\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c3e68c27b2d98f6457ac489d85493b860375d10\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Chr-b\AndroidStudioProjects\DistractorTask\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="C:\Users\Chr-b\AndroidStudioProjects\DistractorTask\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_d9a8ad06650b05fd228fcaa25cebbf0d27f7c13a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Chr-b\.android\build-cache\3256922d39e6bbcaebdb0c5cf3114d1d15e8eb31\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="C:\Users\Chr-b\AndroidStudioProjects\DistractorTask\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c3e68c27b2d98f6457ac489d85493b860375d10\classes.dex" />
     </item>
 
 </items>
