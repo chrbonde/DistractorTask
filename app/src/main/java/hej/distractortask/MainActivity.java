@@ -42,18 +42,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
         String timeStr = timeStamp.toString();
         try {
             writeLog(timeStr);
+            writeLogHap(timeStr);
         } catch (Exception ex) {
             // TODO Auto-generated catch block
             ex.printStackTrace();
         }
     }
 
-    public void writeLog (String time) throws Exception{
+    private void writeLog (String time) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File LogFile = new File(path, "arrowlog.txt");
         final FileWriter LogWriter = new FileWriter(LogFile, true);
         //LogWriter.write("Timestamp: ");
         LogWriter.write(time);
+        LogWriter.write(", ");
+        LogWriter.close();
+    }
+
+    private void writeLogHap (String timez) throws Exception{
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File LogFile = new File(path, "hapticlog.txt");
+        final FileWriter LogWriter = new FileWriter(LogFile, true);
+        //LogWriter.write("Timestamp: ");
+        LogWriter.write(timez);
         LogWriter.write(", ");
         LogWriter.close();
     }

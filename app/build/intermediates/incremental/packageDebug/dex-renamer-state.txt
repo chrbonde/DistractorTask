@@ -1,7 +1,4 @@
-#Thu Nov 02 14:35:50 CET 2017
-base.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_fc515bba201fbd7728ac1c27cfa12268e43f966b
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_d9a8ad06650b05fd228fcaa25cebbf0d27f7c13a\\classes.dex
-base.1=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_d9a8ad06650b05fd228fcaa25cebbf0d27f7c13a
-file.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_fc515bba201fbd7728ac1c27cfa12268e43f966b\\classes.dex
+#Fri Nov 03 13:56:03 CET 2017
+base.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\Chr-b\\AndroidStudioProjects\\DistractorTask\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

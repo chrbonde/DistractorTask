@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -12,18 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class DistractorTask2 extends AppCompatActivity {
 
-    Random rand;
-    //ImageView randomArrow;
-    Button randomBtnUp;
-    Button randomBtnDown;
+    Random rand = new Random();
+    Button randomBtnUp2;
+    Button randomBtnDown2;
     int btnUp = 1;
     int btnDown = 0;
 
@@ -34,19 +30,35 @@ public class DistractorTask2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distractor_task2);
-        checkPermission();
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
-        long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
+        final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
+        final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
         final long[][] randomVibration = {patternDown,patternUp};
-        //v.vibrate (randomVibration[rand.nextInt(randomVibration.length)], -1);
+        int vibrationNum = rand.nextInt(randomVibration.length);
+        vib.vibrate (randomVibration[vibrationNum], -1);
+        try {writeLog(vibrationNum);}
 
-        /*randomBtnUp.setOnClickListener(new View.OnClickListener(){
+        catch (Exception ex)
+            {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+
+        randomBtnUp2 = (Button) findViewById(R.id.randomBtnUp2);
+        randomBtnDown2 = (Button) findViewById(R.id.randomBtnDown2);
+
+
+        //Test//vib.vibrate (randomVibration[rand.nextInt(randomVibration.length)], -1);
+        //int vibrationNum = rand.nextInt(randomVibration.length);
+        //vib.vibrate (randomVibration[vibrationNum], -1);
+
+
+        randomBtnUp2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
-
+                checkPermission();
                 try {writeLog(btnUp);
                 }
                 catch (Exception ex)
@@ -54,6 +66,10 @@ public class DistractorTask2 extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     ex.printStackTrace();
                 }
+                final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
+                final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
+                final long[][] randomVibration = {patternDown,patternUp};
                 int vibrationNum = rand.nextInt(randomVibration.length);
 
                 try {writeLog(vibrationNum);
@@ -63,12 +79,14 @@ public class DistractorTask2 extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                var randomVib = randomVibration[vibrationNum];
-                v.vibrate (randomVibration[vibrationNum], -1);
+                //long randomVib = randomVibration[vibrationNum];
+                vib.vibrate (randomVibration[vibrationNum], -1);
+
+
             }
         });
 
-        randomBtnDown.setOnClickListener(new View.OnClickListener() {
+        randomBtnDown2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -80,20 +98,24 @@ public class DistractorTask2 extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     ex.printStackTrace();
                 }
-                int arrowNum = rand.nextInt(images.length);
-                try {writeLog(arrowNum);
+                final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
+                final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
+                final long[][] randomVibration = {patternDown,patternUp};
+
+                int vibrationNum2 = rand.nextInt(randomVibration.length);
+                try {writeLog(vibrationNum2);
                 }
                 catch (Exception e)
                 {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                randomArrow.setImageResource(images[arrowNum]);
+                vib.vibrate (randomVibration[vibrationNum2], -1);
             }
-        }); */
+        });
 
     }
-
 
 
     private void checkPermission() {
@@ -121,12 +143,13 @@ public class DistractorTask2 extends AppCompatActivity {
         }
     }
 
-    public void writeLog (Integer arrowStr) throws Exception{
+
+    private void writeLog (Integer hapticStr) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File LogFile = new File(path, "arrowlog.txt");
+        File LogFile = new File(path, "hapticlog.txt");
         final FileWriter LogWriter = new FileWriter(LogFile, true);
         //LogWriter.write("");
-        LogWriter.write(arrowStr.toString());
+        LogWriter.write(hapticStr.toString());
         LogWriter.write(",");
         LogWriter.close();
     }
