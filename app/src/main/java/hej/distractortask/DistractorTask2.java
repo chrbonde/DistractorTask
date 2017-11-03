@@ -9,11 +9,15 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.InputDevice;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Random;
+
+import static android.R.attr.button;
 
 public class DistractorTask2 extends AppCompatActivity {
 
@@ -30,6 +34,7 @@ public class DistractorTask2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distractor_task2);
+        checkPermission();
 
         final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
@@ -45,6 +50,8 @@ public class DistractorTask2 extends AppCompatActivity {
                 ex.printStackTrace();
             }
 
+
+        /*
         randomBtnUp2 = (Button) findViewById(R.id.randomBtnUp2);
         randomBtnDown2 = (Button) findViewById(R.id.randomBtnDown2);
 
@@ -113,8 +120,58 @@ public class DistractorTask2 extends AppCompatActivity {
                 }
                 vib.vibrate (randomVibration[vibrationNum2], -1);
             }
-        });
+        });*/
 
+
+
+    }
+
+    /*
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        if (0 != (event.getSource() & InputDevice.SOURCE_MOUSE)) {
+            switch (event.getAction()) {
+                case MotionEvent.BUTTON_PRIMARY:
+                        try {writeLog(btnUp);
+                        }
+                        catch (Exception ex)
+                        {
+                            // TODO Auto-generated catch block
+                            ex.printStackTrace();
+                        }
+                    break;
+                    case MotionEvent.BUTTON_SECONDARY:
+                        try {writeLog(btnDown);
+                        }
+                        catch (Exception ex)
+                        {
+                            // TODO Auto-generated catch block
+                            ex.printStackTrace();
+                        }
+                    break;
+            }
+        }
+        return super.onGenericMotionEvent(event);
+    }*/
+
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        if (event.getButtonState() == MotionEvent.BUTTON_PRIMARY) {
+            try {
+                writeLog(btnUp);
+            } catch (Exception ex) {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+        } else if (event.getButtonState() == MotionEvent.BUTTON_SECONDARY) {
+            try {
+                writeLog(btnDown);
+            } catch (Exception ex) {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+        }
+        return super.onGenericMotionEvent(event);
     }
 
 
