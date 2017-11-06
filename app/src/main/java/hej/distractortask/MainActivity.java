@@ -24,15 +24,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(this);
 
-
-        Date timeStamp = new Date();
+        /*Date timeStamp = new Date();
         String timeStr = timeStamp.toString();
         try {
             writeLog(timeStr);
+            writeLogHap(timeStr);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
@@ -73,10 +73,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button2:
+                Date timeStamp = new Date();
+                String timeStr = timeStamp.toString();
+                try {
+                    writeLog(timeStr);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 Intent start = new Intent(MainActivity.this, DistractorTask.class);
                 startActivity(start);
                 break;
             case R.id.button3:
+                Date timeStamp2 = new Date();
+                String timeStr2 = timeStamp2.toString();
+                try {
+                    writeLog(timeStr2);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 Intent start2 = new Intent(MainActivity.this, DistractorTask2.class);
                 startActivity(start2);
                 break;

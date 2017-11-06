@@ -9,21 +9,21 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.InputDevice;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 import java.io.File;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
-import static android.R.attr.button;
 
 public class DistractorTask2 extends AppCompatActivity {
 
     Random rand = new Random();
-    Button randomBtnUp2;
-    Button randomBtnDown2;
+    //Button randomBtnUp2;
+    //Button randomBtnDown2;
     int btnUp = 1;
     int btnDown = 0;
 
@@ -43,116 +43,12 @@ public class DistractorTask2 extends AppCompatActivity {
         int vibrationNum = rand.nextInt(randomVibration.length);
         vib.vibrate (randomVibration[vibrationNum], -1);
         try {writeLog(vibrationNum);}
-
         catch (Exception ex)
             {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
             }
-
-
-        /*
-        randomBtnUp2 = (Button) findViewById(R.id.randomBtnUp2);
-        randomBtnDown2 = (Button) findViewById(R.id.randomBtnDown2);
-
-
-        //Test//vib.vibrate (randomVibration[rand.nextInt(randomVibration.length)], -1);
-        //int vibrationNum = rand.nextInt(randomVibration.length);
-        //vib.vibrate (randomVibration[vibrationNum], -1);
-
-
-        randomBtnUp2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-
-                checkPermission();
-                try {writeLog(btnUp);
-                }
-                catch (Exception ex)
-                {
-                    // TODO Auto-generated catch block
-                    ex.printStackTrace();
-                }
-                final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
-                final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
-                final long[][] randomVibration = {patternDown,patternUp};
-                int vibrationNum = rand.nextInt(randomVibration.length);
-
-                try {writeLog(vibrationNum);
-                }
-                catch (Exception e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                //long randomVib = randomVibration[vibrationNum];
-                vib.vibrate (randomVibration[vibrationNum], -1);
-
-
-            }
-        });
-
-        randomBtnDown2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                try {writeLog(btnDown);
-                }
-                catch (Exception ex)
-                {
-                    // TODO Auto-generated catch block
-                    ex.printStackTrace();
-                }
-                final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
-                final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
-                final long[][] randomVibration = {patternDown,patternUp};
-
-                int vibrationNum2 = rand.nextInt(randomVibration.length);
-                try {writeLog(vibrationNum2);
-                }
-                catch (Exception e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                vib.vibrate (randomVibration[vibrationNum2], -1);
-            }
-        });*/
-
-
-
     }
-
-    /*
-    @Override
-    public boolean onGenericMotionEvent(MotionEvent event) {
-        if (0 != (event.getSource() & InputDevice.SOURCE_MOUSE)) {
-            switch (event.getAction()) {
-                case MotionEvent.BUTTON_PRIMARY:
-                        try {writeLog(btnUp);
-                        }
-                        catch (Exception ex)
-                        {
-                            // TODO Auto-generated catch block
-                            ex.printStackTrace();
-                        }
-                    break;
-                    case MotionEvent.BUTTON_SECONDARY:
-                        try {writeLog(btnDown);
-                        }
-                        catch (Exception ex)
-                        {
-                            // TODO Auto-generated catch block
-                            ex.printStackTrace();
-                        }
-                    break;
-            }
-        }
-        return super.onGenericMotionEvent(event);
-    }*/
 
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
@@ -163,10 +59,34 @@ public class DistractorTask2 extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
             }
+            final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
+            final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
+            final long[][] randomVibration = {patternDown,patternUp};
+            int vibrationNum = rand.nextInt(randomVibration.length);
+            vib.vibrate (randomVibration[vibrationNum], -1);
+            try {writeLog(vibrationNum);}
+            catch (Exception ex)
+            {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
         } else if (event.getButtonState() == MotionEvent.BUTTON_SECONDARY) {
             try {
                 writeLog(btnDown);
             } catch (Exception ex) {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+            final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
+            final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
+            final long[][] randomVibration = {patternDown,patternUp};
+            int vibrationNum = rand.nextInt(randomVibration.length);
+            vib.vibrate (randomVibration[vibrationNum], -1);
+            try {writeLog(vibrationNum);}
+            catch (Exception ex)
+            {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
             }
@@ -204,8 +124,12 @@ public class DistractorTask2 extends AppCompatActivity {
     private void writeLog (Integer hapticStr) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File LogFile = new File(path, "hapticlog.txt");
+        SimpleDateFormat format= new SimpleDateFormat("HH:mm:ssZZZZZ", Locale.getDefault());
+        String myDate = format.format(new Date());
         final FileWriter LogWriter = new FileWriter(LogFile, true);
         //LogWriter.write("");
+        LogWriter.write(myDate);
+        LogWriter.write(": ");
         LogWriter.write(hapticStr.toString());
         LogWriter.write(",");
         LogWriter.close();

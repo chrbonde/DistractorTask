@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import java.io.File;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class DistractorTask extends AppCompatActivity {
@@ -123,11 +126,15 @@ public class DistractorTask extends AppCompatActivity {
     public void writeLog (Integer arrowStr) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File LogFile = new File(path, "arrowlog.txt");
+        SimpleDateFormat format= new SimpleDateFormat("HH:mm:ssZZZZZ", Locale.getDefault());
+        String myDate = format.format(new Date());
         final FileWriter LogWriter = new FileWriter(LogFile, true);
             //LogWriter.write("");
+            LogWriter.write(myDate);
+            LogWriter.write(": ");
             LogWriter.write(arrowStr.toString());
             LogWriter.write(",");
-                LogWriter.close();
+            LogWriter.close();
     }
 
     @Override
