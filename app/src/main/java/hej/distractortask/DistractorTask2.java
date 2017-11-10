@@ -1,16 +1,15 @@
 package hej.distractortask;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Environment;
-import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.widget.Button;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -22,6 +21,7 @@ import java.util.Random;
 public class DistractorTask2 extends AppCompatActivity {
 
     Random rand = new Random();
+    int[] sounds={R.raw.sound_short, R.raw.sound_long};
     //Button randomBtnUp2;
     //Button randomBtnDown2;
     int btnUp = 1;
@@ -35,7 +35,16 @@ public class DistractorTask2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distractor_task2);
         checkPermission();
-
+        int randSnd = rand.nextInt(sounds.length);
+        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), sounds[randSnd]);
+        try {writeLog(randSnd);}
+        catch (Exception ex)
+        {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+        }
+        mp.start();
+        /*
         final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
         final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
@@ -47,19 +56,29 @@ public class DistractorTask2 extends AppCompatActivity {
             {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
-            }
+            }*/
     }
 
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
-        if (event.getButtonState() == MotionEvent.BUTTON_PRIMARY) {
+        if ((event.getButtonState() == MotionEvent.BUTTON_PRIMARY) && (event.getButtonState() == MotionEvent.ACTION_BUTTON_PRESS) ) {
             try {
                 writeLog(btnUp);
             } catch (Exception ex) {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
             }
-            final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            int randSnd = rand.nextInt(sounds.length);
+            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), sounds[randSnd]);
+            try {writeLog(randSnd);}
+            catch (Exception ex)
+            {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+            mp.start();
+
+            /*final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
             final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
             final long[][] randomVibration = {patternDown,patternUp};
@@ -70,14 +89,24 @@ public class DistractorTask2 extends AppCompatActivity {
             {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
-            }
-        } else if (event.getButtonState() == MotionEvent.BUTTON_SECONDARY) {
+            }*/
+        } else if ((event.getButtonState() == MotionEvent.BUTTON_SECONDARY) && (event.getButtonState() == MotionEvent.ACTION_BUTTON_PRESS) ) {
             try {
                 writeLog(btnDown);
             } catch (Exception ex) {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
             }
+            int randSnd = rand.nextInt(sounds.length);
+            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), sounds[randSnd]);
+            try {writeLog(randSnd);}
+            catch (Exception ex)
+            {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
+            mp.start();
+            /*
             final Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             final long[] patternUp ={0, 100, 200, 100, 150 , 100 , 100 , 100 ,50, 100, 0, 100};
             final long[] patternDown ={0, 100, 0, 100, 50 , 100 , 100 , 100 ,150, 100, 200, 100};
@@ -89,7 +118,7 @@ public class DistractorTask2 extends AppCompatActivity {
             {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
-            }
+            }*/
         }
         return super.onGenericMotionEvent(event);
     }
