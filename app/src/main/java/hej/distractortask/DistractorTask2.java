@@ -172,12 +172,15 @@ public class DistractorTask2 extends AppCompatActivity {
     private void writeLog (Integer hapticStr) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File LogFile = new File(path, "hapticlog.txt");
-        SimpleDateFormat format= new SimpleDateFormat("HH:mm:ssZZZZZ", Locale.getDefault());
-        String myDate = format.format(new Date());
+        //SimpleDateFormat format= new SimpleDateFormat("mm:ss:SSSS", Locale.getDefault());
+        //String myDate = format.format(new Date());
+        long time = System.currentTimeMillis();
+        String timeStamp = Long.toString(time);
         final FileWriter LogWriter = new FileWriter(LogFile, true);
         //LogWriter.write("");
-        LogWriter.write(myDate);
-        LogWriter.write(": ");
+        //LogWriter.write(myDate);
+        LogWriter.write(timeStamp);
+        LogWriter.write("; ");
         LogWriter.write(hapticStr.toString());
         LogWriter.write(",");
         LogWriter.close();

@@ -26,6 +26,7 @@ public class DistractorTask extends AppCompatActivity {
     int btnDown = 0;
     static final Integer MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL = 1;
 
+
     Integer[] images = {
             R.drawable.arrow_down,
             R.drawable.arrow_up
@@ -126,12 +127,14 @@ public class DistractorTask extends AppCompatActivity {
     public void writeLog (Integer arrowStr) throws Exception{
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File LogFile = new File(path, "arrowlog.txt");
-        SimpleDateFormat format= new SimpleDateFormat("HH:mm:ssZZZZZ", Locale.getDefault());
-        String myDate = format.format(new Date());
+        //SimpleDateFormat format= new SimpleDateFormat("mm:ss:SSSS", Locale.getDefault());
+        //String myDate = format.format(new Date());
+        long time = System.currentTimeMillis();
+        String timeStamp = Long.toString(time);
         final FileWriter LogWriter = new FileWriter(LogFile, true);
-            //LogWriter.write("");
-            LogWriter.write(myDate);
-            LogWriter.write(": ");
+            //LogWriter.write(myDate);
+            LogWriter.write(timeStamp);
+            LogWriter.write("; ");
             LogWriter.write(arrowStr.toString());
             LogWriter.write(",");
             LogWriter.close();
